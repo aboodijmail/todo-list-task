@@ -16,16 +16,14 @@ const App = () => {
     fetchTodos();
   }, []);
 
-
   const addTodo = (e) => {
     e.preventDefault();
     if (!newTaskText.trim()) return;
 
     const newTask = { id: Date.now(), todo: newTaskText, completed: false };
-    setTodos([newTask, ...todos]);  
+    setTodos([newTask, ...todos]);
     setNewTaskText("");
   };
-
 
   const handkeCompletion = (id) => {
     setTodos(
@@ -68,31 +66,32 @@ const App = () => {
           Add
         </button>
       </div>
-      <div className="task-container">
-        <ul className="task-list">
+      <div className="todo-container">
+        <ul className="todo-list">
           {todos.map((task) => (
-            <li
-              key={task.id}
-              className={`todo-item ${task.completed ? "task-completed" : ""}`}
-            >
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => handkeCompletion(task.id)}
-                className="task-checkbox"
-              />
-              <span 
-                style={{cursor:'pointer'}}
+            <li key={task.id} className={`todo-item `}>
+              <span
+                style={{ cursor: "pointer" }}
+                className={`${task.completed ? "todo-completed" : ""}`}
                 onClick={() => fetchTaskDetails(task.id)}
               >
                 {task.todo}
               </span>
-              <button
-                onClick={() => deleteTodo(task.id)}
-                className="delete-button"
-              >
-                Delete
-              </button>
+              <div  className="task-actions">
+                <input
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => handkeCompletion(task.id)}
+                  className=""
+                />
+
+                <button
+                  onClick={() => deleteTodo(task.id)}
+                  className="delete-button"
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

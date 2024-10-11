@@ -31,10 +31,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
   }
   
-  .todo-item.completed label {
+  .todo-completed {
     text-decoration: line-through;
     color: green;
   }
@@ -48,12 +48,12 @@
   }
   
 
-  .task-container {
+  .todo-container {
     display: flex;
     justify-content: space-between;
   }
   
-  .task-list {
+  .todo-list {
     flex: 1;
     margin-right: 20px;
   }
@@ -63,4 +63,10 @@
     padding: 20px;
     background-color: #f0f0f0;
     border-radius: 8px;
+  }
+
+  .task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
   }
